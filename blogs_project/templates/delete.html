@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="p-3 shadow">
+                <h3>Sure, you've done with this?</h3>
+                <button type="submit" class="btn btn-danger">Confirm that</button>
+                <a href="{% url 'blogview' %}">if not, click here</a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+{% endblock %}

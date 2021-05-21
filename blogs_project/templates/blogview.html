@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text" style="color:white">
+                    <h1>While B'ing BloGs</h1><br>
+                    {% if user.is_authenticated %}
+                    <h3 style="color:cyan" align="right">Hai, {{user.username}}</h3>
+                    <h4 align="right"><a href="accounts/logout" style="color:black">Logout</a></h4>
+                    {% else %}
+                    <h3><a href="accounts/register" style="color:black">Register</a></h3>
+                    <h4><a href="accounts/login" style="color:black">Login</a></h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-6">
+        <h4 align="center">Add Your Blog</h4>
+        <form method="post" class="p-3 shadow">
+        {% csrf_token %}
+        <div class="form-group">
+        <input type="text" name="heading" class="form-control" placeholder="Enter the Heading"><br>
+        </div>
+        <div class="form-group">
+        <input type="text" name="desc" class="form-control" placeholder="Breif description of blog"><br>
+        </div>
+        <div class="form-group">
+        <input type="text" name="content" class="form-control" placeholder="Narrate your story here!"><br></div>
+        <div class="form-group">
+        <input type="date" name="date" class="form-control" placeholder="created on"><br>
+        </div>
+        <input type="submit" value="Post" class="btn btn-success">
+        </form>
+
+    </div>
+    <div class="col-md-6">
+        <h4 align="center">Completed Blogs</h4>
+       {% for i in obj1 %}
+        <div class="shadow card">
+        <div class="card-body">
+            <h5 class="card-title">{{i.heading}}</h5>
+            <p>A short View:-{{i.desc}}</p>
+            <p>{{i.content}}</p>
+            <p>{{i.date}}</p><a  href="{% url 'cbvdetail' i.pk %}">View more</a><br>
+            <a class="btn btn-info" href="{% url 'update' i.id %}">Update</a>
+            <a class="btn btn-warning" href="{% url 'delete' i.id %}">Delete</a>
+
+        </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+<div class="p-3 mb-2 bg-info text-white" align="center">&copy;While B'ing</div>
+
+
+{% endblock %}

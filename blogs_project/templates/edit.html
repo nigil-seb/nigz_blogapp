@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text" style="color:green">
+                    <h2>Update</h2><br>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="card" style="width:100%;height:200%;">
+    <div class="card-header" align="center">
+        <h4 class="card-title">updates here</h4>
+    </div>
+
+<div class="card-body" align="center">
+    <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-secondary">
+    <a href="{% url 'blogview' %}">I don't want this?</a>
+    </form>
+</div>
+</div>
+
+</div>
+{% endblock %}

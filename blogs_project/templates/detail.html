@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="shadow card">
+    <div class="card-body">
+        <h5 class="card-title">{{i.heading}}</h5>
+        <p>A short View:-{{i.desc}}</p>
+        <p>{{i.content}}</p>
+        <p>{{i.date}}</p>
+        <a class="btn btn-info" href="{% url 'update' i.id %}">Update</a>
+        <a class="btn btn-warning" href="{% url 'delete' i.id %}">Delete</a>
+        <a href="{% url 'blogview' %}">View less</a>
+    </div>
+</div>
+
+
+{% endblock %}
